@@ -14,7 +14,7 @@ interface Props {
 export const CardDrink = ({ title, description, price, btnName="Agregar pedido",img="https://bobocha.com.pe/wp-content/uploads/Te-Leche-v2.webp" }: Props) => {
     return (
         <>
-            <Card className="w-full max-w-70 flex flex-col h-full mx-5">
+            <Card className="w-full max-w-70 flex flex-col h-full ">
 
                 <CardHeader >
                     <CardTitle className="text-center">{title}</CardTitle>
