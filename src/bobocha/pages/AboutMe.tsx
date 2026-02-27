@@ -3,8 +3,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export const AboutMe = () => {
     return (
         <>
-            <div className="w-full max-w-auto">
-                <Card>
+            <div className="flex flex-col gap-5">
+                <Card className="mx-5 my-5 max-w-80">
                     <CardHeader>
                         <CardTitle >Sobre mí</CardTitle>
                         <CardDescription>¿PORQUÉ HICE ESTÓ?</CardDescription>
@@ -13,7 +13,7 @@ export const AboutMe = () => {
                         <div className="bg-purple-200 rounded-full ">
 
                         <img
-                            className="backdrop-blur-xs rounded-full w-auto"
+                            className="backdrop-blur-xs rounded-full w-auto "
                             src="https://marvelrivals.wiki.gg/images/Gambit_Prestige_Artwork.png?5c3e01" />
                             
                         </div>

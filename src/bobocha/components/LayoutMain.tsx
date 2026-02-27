@@ -4,13 +4,13 @@ import { CustomSidebar } from "./sidebar/CustomSidebar"
 
 export const LayoutMain = () => {
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col ">
 
             {/* Header */}
             <CustomHeader/>
 
             {/* Body */}
-            <div className="flex flex-1">
+            <div className="flex flex-1 ">
 
                 {/* Sidebar */}
                 <CustomSidebar/>
