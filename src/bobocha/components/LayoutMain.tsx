@@ -10,7 +10,7 @@ export const LayoutMain = () => {
             <CustomHeader/>
 
             {/* Body */}
-            <div className="flex flex-1 ">
+            <div className="flex flex-1">
 
                 {/* Sidebar */}
                 <CustomSidebar/>
@@ -18,7 +18,7 @@ export const LayoutMain = () => {
                 {/* Content Dinamic */}
                 <div className="flex-1">
                     
-                        <Outlet/>
+                    <Outlet/>
                     
                 </div>
 

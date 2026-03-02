@@ -9,7 +9,7 @@ export const BobochaMain = () => {
             </div>
 
             {/* Cards Drinks */}
-            <div className="flex flex-wrap gap-3 justify-center mx-5">
+            <div className="flex flex-wrap gap-3 justify-center mx-5 my-5">
                 <CardDrink
                     title="Bubbles Clásicos"
                     description="Bebidas clásicas con su riquichichísima tapioca."
