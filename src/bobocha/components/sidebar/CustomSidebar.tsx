@@ -22,7 +22,7 @@ export const CustomSidebar = () => {
                 <span className="flex text-green-600 font-bold text-center text-md md:text-xl hover:text-green-900 cursor-pointer my-4 items-center justify-center"
                     onClick={() => { setColapso(prev => !prev) }}
                 >
-                    {colapso ? <MenuIcon /> : "¡Menú Bobochástico!"}
+                    {colapso ? <MenuIcon /> : "¡Menú BoBochástico!"}
                 </span>
 
                 <Link to="/">
