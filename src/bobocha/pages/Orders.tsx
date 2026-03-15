@@ -1,18 +1,17 @@
 import { useParams } from "react-router"
 import { CardDrink } from "../components/cardDrinks/CardDrink"
-import { menuData, type MenuItem, type MenuSubCategory } from "@/mock/data.mock";
+import { menuData } from "@/mock/data.mock";
 
 const Orders = () => {
-    const { idSlug } = useParams();
+    const { category, sub } = useParams();
 
-    const category = menuData.find(data => data.id === idSlug);
-    let items: MenuItem[] | MenuSubCategory[] = []
+    const cat = menuData.find(data => data.id === category);
 
-    if (category?.subs) {
-        items = category.subs
-    } else if (category?.items) {
-        items = category.items
-    } 
+    const items =
+        cat?.subs?.find(s => s.id === sub)?.items ??    
+        cat?.subs ??
+        cat?.items ??
+        [];
 
     return (
         <>
@@ -24,7 +23,7 @@ const Orders = () => {
                         description={item?.description}
                         price={item.price}
                         img="/logo.png"
-                        to={item.to}
+                        to={"items" in item ? item.id : undefined}
                     />
                 ))}
             </div>
