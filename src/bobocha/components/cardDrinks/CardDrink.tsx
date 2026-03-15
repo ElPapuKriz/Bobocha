@@ -39,7 +39,7 @@ export const CardDrink = ({ title, description, price, btnName = "Agregar pedido
 
                 <CardFooter className="mt-auto">
                     <Button className="w-full" asChild>
-                        {to ? <Link to={to}>{btnName}</Link> : <span>{btnName}</span>}
+                        {to ? <Link to={to}>{btnName}</Link> : <span>{"Comprar"}</span>}
                     </Button>
                 </CardFooter>
 
