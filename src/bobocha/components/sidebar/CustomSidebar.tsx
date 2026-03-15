@@ -5,54 +5,70 @@ import { Link } from "react-router"
 
 export const CustomSidebar = () => {
 
-    const [colapso, setColapso] = useState(false)
+    const [colapso, setColapso] = useState(true)
 
     return (
-        <aside className={` flex flex-col border-r p-4 bg-linear-to-b from-green-50 to-green-200 transition-all duration-300 ${colapso ? "w-18" : "w-40"}`}>
-
-
-
-
-
-
-
+        <aside className={`flex flex-col border-r p-4 bg-linear-to-b from-green-50 to-green-200 transition-all duration-300 ${colapso ? "w-16" : "w-40"} `}>
 
             <div className="flex flex-col gap-2">
 
-                <span className="flex text-green-600 font-bold text-center text-md md:text-xl hover:text-green-900 cursor-pointer my-4 items-center justify-center"
-                    onClick={() => { setColapso(prev => !prev) }}
+                <span
+                    className="text-green-600 font-bold text-center text-sm md:text-xl hover:text-green-900 cursor-pointer my-10 flex items-center justify-center"
+                    onClick={() => setColapso(prev => !prev)}
                 >
-                    {colapso ? <MenuIcon /> : "¡Menú BoBochástico!"}
+                    {colapso ? <MenuIcon className="md:size-7" /> : "¡Menú BoBochástico!"}
                 </span>
 
                 <Link to="/">
-                    <Button className={`w-full justify-center text-green-600 hover:text-blue-500`} variant={"outline"}>{colapso ? "" : "Venta Rápida"}<Zap /></Button>
+                    <Button
+                        className="w-full flex items-center justify-center gap-2 text-green-600 hover:text-blue-500"
+                        variant="outline"
+                    >
+                        <Zap />
+
+                        {!colapso && (
+                            <span className="text-xs md:text-sm">
+                                Venta Rápida
+                            </span>
+                        )}
+
+                    </Button>
                 </Link>
 
                 <Link to="/about-me">
-                    <Button className={`w-full justify-center text-green-600 hover:text-blue-500`} variant={"outline"}>{colapso ? "" : "Acerca de mí"}<BookAIcon /></Button>
+                    <Button
+                        className="w-full flex items-center justify-center gap-2 text-green-600 hover:text-blue-500"
+                        variant="outline"
+                    >
+                        <BookAIcon />
+
+                        {!colapso && (
+                            <span className="text-xs md:text-sm">
+                                Acerca de mí
+                            </span>
+                        )}
+
+                    </Button>
                 </Link>
+
             </div>
 
             <div className="min-h-screen flex flex-col justify-end">
 
-                <Button asChild
+                <Button
+                    asChild
                     className="bg-transparent hover:bg-transparent cursor-default text-green-600"
-
                 >
                     <a
-                        className=" font-sans text-center hover:text-green-950 cursor-pointer"
+                        className="font-sans text-center hover:text-green-950 cursor-pointer text-xs md:text-sm"
                         href="https://www.instagram.com/ironchris637/"
                         target="_blank"
                     >
                         ©ElKriZdev
                     </a>
-
                 </Button>
 
             </div>
-
-
 
         </aside>
     )

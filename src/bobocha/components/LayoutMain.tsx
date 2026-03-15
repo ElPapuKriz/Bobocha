@@ -16,7 +16,7 @@ export const LayoutMain = () => {
                 <CustomSidebar/>
 
                 {/* Content Dinamic */}
-                <div className="flex-1">
+                <div className="flex-1 mx-8">
                     
                     <Outlet/>
                     
