@@ -1,5 +1,30 @@
+export interface MenuItem {
+    id: string
+    title: string
+    description: string
+    price?: number | string;
+    to?:string;
+    slug:string;
+}
 
-export const menuData = [
+export interface MenuSubCategory {
+    id: string
+    title: string
+    description: string
+    price?: number;
+    to?:string;
+    items: MenuItem[]
+    slug?:string;
+}
+
+export interface MenuCategory {
+    id: string
+    label: string
+    items?: MenuItem[]
+    subs?: MenuSubCategory[]
+}
+
+export const menuData: MenuCategory[] = [
     {
         id: 'bebidas_clasicas',
         label: 'Bebidas Clásicas',
@@ -9,56 +34,56 @@ export const menuData = [
                 title: 'Classic Bubble Tea',
                 description: 'El tradicional té negro con leche deslactosada y perlas de tapioca.',
                 price: 8.00,
-                to: 'classic-bubble-tea'
+                slug: 'classic-bubble-tea'
             },
             {
                 id: 'bc_2',
                 title: 'Taro Milk Tea',
                 description: 'Bebida cremosa a base de raíz de taro con un toque avainillado y color púrpura.',
                 price: 9.00,
-                to: 'taro-milk-tea'
+                slug: 'taro-milk-tea'
             },
             {
                 id: 'bc_3',
                 title: 'Matcha Latte Boba',
                 description: 'Auténtico té verde matcha japonés mezclado con leche y tapioca.',
                 price: 10.00,
-                to: 'matcha-latte-boba'
+                slug: 'matcha-latte-boba'
             },
             {
                 id: 'bc_4',
                 title: 'Thai Milk Tea',
                 description: 'Té negro tailandés especiado, leche condensada y un dulzor inconfundible.',
                 price: 9.50,
-                to: 'thai-milk-tea'
+                slug: 'thai-milk-tea'
             },
             {
                 id: 'bc_5',
                 title: 'Jasmine Milk Tea',
                 description: 'Té verde con infusión de flores de jazmín y leche, muy refrescante y ligero.',
                 price: 8.50,
-                to: 'jasmine-milk-tea'
+                slug: 'jasmine-milk-tea'
             },
             {
                 id: 'bc_6',
                 title: 'Brown Sugar Tiger Milk',
                 description: 'Leche fresca con un intenso jarabe de azúcar morena y tapioca caliente.',
                 price: 11.00,
-                to: 'brown-sugar-tiger-milk'
+                slug: 'brown-sugar-tiger-milk'
             },
             {
                 id: 'bc_7',
                 title: 'Oolong Milk Tea',
                 description: 'Té Oolong tostado combinado con leche, ideal para un sabor más profundo.',
                 price: 9.00,
-                to: 'oolong-milk-tea'
+                slug: 'oolong-milk-tea'
             },
             {
                 id: 'bc_8',
                 title: 'Earl Grey Boba',
                 description: 'Té negro Earl Grey con notas cítricas de bergamota y leche cremosa.',
                 price: 8.50,
-                to: 'earl-grey-boba'
+                slug: 'earl-grey-boba'
             }
         ]
     },
@@ -71,185 +96,188 @@ export const menuData = [
                 title: 'Passion Fruit Green Tea',
                 description: 'Té verde con pulpa real de maracuyá. Cítrico y refrescante.',
                 price: 7.50,
-                to: 'passion-fruit-green-tea'
+                slug: 'passion-fruit-green-tea'
             },
             {
                 id: 'bf_2',
                 title: 'Mango Green Tea',
                 description: 'Té verde helado con puré de mango dulce y jelly de frutas.',
                 price: 8.00,
-                to: 'mango-green-tea'
+                slug: 'mango-green-tea'
             },
             {
                 id: 'bf_3',
                 title: 'Peach Oolong Tea',
                 description: 'Té Oolong con esencia y trozos de durazno fresco.',
                 price: 8.00,
-                to: 'peach-oolong-tea'
+                slug: 'peach-oolong-tea'
             },
             {
                 id: 'bf_4',
                 title: 'Strawberry Black Tea',
                 description: 'Té negro frío agitado con fresas machacadas y sirope artesanal.',
                 price: 8.50,
-                to: 'strawberry-black-tea'
+                slug: 'strawberry-black-tea'
             },
             {
                 id: 'bf_5',
                 title: 'Lychee Green Tea',
                 description: 'Té verde con el dulzor floral del lichi y popping boba.',
                 price: 9.00,
-                to: 'lychee-green-tea'
+                slug: 'lychee-green-tea'
             },
             {
                 id: 'bf_6',
                 title: 'Grapefruit Tea',
                 description: 'Refrescante té verde con jugo de toronja rosada y rodajas frescas.',
                 price: 8.50,
-                to: 'grapefruit-tea'
+                slug: 'grapefruit-tea'
             },
             {
                 id: 'bf_7',
                 title: 'Pineapple Green Tea',
                 description: 'Té verde tropical con mermelada de piña casera.',
                 price: 8.00,
-                to: 'pineapple-green-tea'
+                slug: 'pineapple-green-tea'
             },
             {
                 id: 'bf_8',
                 title: 'Kumquat Lemon Tea',
                 description: 'Té negro con limón y kumquat para una explosión cítrica.',
                 price: 7.50,
-                to: 'kumquat-lemon-tea'
+                slug: 'kumquat-lemon-tea'
             }
         ]
     },
     {
-        id: 'cremoladas',
-        label: 'Cremoladas',
+        id:'cremoladas',
+        label:'Cremoladas',
         subs: [
             {
-                id: 'cremolada_con_leche',
-                title: 'Cremolada con leche',
-                to:'cremolada_con_leche',
+                id:'cremolada_con_leche',
+                title:'Cremolada con leche',
+                description:'Disfruta de cremoladas con leche y su riquichichima tapioca',
+                slug:'',
                 items: [
                     {
                         id: 'ccl_1',
                         title: 'Cremolada de Fresa con Leche',
                         description: 'Cremolada suave de fresas frescas licuadas con leche entera y condensada.',
                         price: 7.00,
-                        to: 'cremolada-fresa-leche'
+                        slug: 'cremolada-fresa-leche'
                     },
                     {
                         id: 'ccl_2',
                         title: 'Cremolada de Lúcuma',
                         description: 'El clásico sabor peruano. Lúcuma de seda batida con leche cremosa.',
                         price: 8.00,
-                        to: 'cremolada-lucuma'
+                        slug: 'cremolada-lucuma'
                     },
                     {
                         id: 'ccl_3',
                         title: 'Cremolada de Mango con Leche',
                         description: 'Mango Edward maduro licuado con un toque de leche.',
                         price: 7.50,
-                        to: 'cremolada-mango-leche'
+                        slug: 'cremolada-mango-leche'
                     },
                     {
                         id: 'ccl_4',
                         title: 'Cremolada de Coco',
                         description: 'Base de leche con crema de coco y ralladura de coco tostado.',
                         price: 8.00,
-                        to: 'cremolada-coco'
+                        slug: 'cremolada-coco'
                     },
                     {
                         id: 'ccl_5',
                         title: 'Cremolada de Chocolate',
                         description: 'Cacao puro, leche y chispas de chocolate congeladas.',
                         price: 8.50,
-                        to: 'cremolada-chocolate'
+                        slug: 'cremolada-chocolate'
                     },
                     {
                         id: 'ccl_6',
                         title: 'Cremolada de Vainilla Francesa',
                         description: 'Suave cremolada de vainilla con un toque de canela espolvoreada.',
                         price: 7.00,
-                        to: 'cremolada-vainilla'
+                        slug: 'cremolada-vainilla'
                     },
                     {
                         id: 'ccl_7',
                         title: 'Cremolada de Plátano',
                         description: 'Plátano de seda con leche, dulce, nutritiva y muy refrescante.',
                         price: 7.00,
-                        to: 'cremolada-platano'
+                        slug: 'cremolada-platano'
                     },
                     {
                         id: 'ccl_8',
                         title: 'Cremolada de Algarrobina',
                         description: 'Leche helada batida con jarabe de algarrobina pura del norte peruano.',
                         price: 8.50,
-                        to: 'cremolada-algarrobina'
+                        slug: 'cremolada-algarrobina'
                     }
                 ]
             },
             {
-                id: 'cremolada_con_leche',
+                id: 'cremolada_sin_leche',
                 title: 'Cremolada sin leche',
+                description:'Disfruta de cremoladas sin leche pero con su riquichichima tapioca',
+                slug: '',
                 items: [
                     {
                         id: 'csl_1',
-                        title: 'Cremolada de Fresa (Al agua)',
+                        title: 'Cremolada de Fresa',
                         description: 'Puro hielo y pulpa de fresa, súper ligera y refrescante.',
                         price: 6.00,
-                        to: 'cremolada-fresa-agua'
+                        slug:''
                     },
                     {
                         id: 'csl_2',
                         title: 'Cremolada de Maracuyá',
                         description: 'Pura fruta de la pasión helada. Cítrica al máximo.',
                         price: 6.50,
-                        to: 'cremolada-maracuya'
+                        slug: 'cremolada-maracuya'
                     },
                     {
                         id: 'csl_3',
                         title: 'Cremolada de Limón',
                         description: 'El clásico frozen de limón, perfecto para calmar la sed.',
                         price: 6.00,
-                        to: 'cremolada-limon'
+                        slug: 'cremolada-limon'
                     },
                     {
                         id: 'csl_4',
                         title: 'Cremolada de Piña',
                         description: 'Piña Golden licuada con hielo, dulce y tropical.',
                         price: 6.50,
-                        to: 'cremolada-pina'
+                        slug: 'cremolada-pina'
                     },
                     {
                         id: 'csl_5',
                         title: 'Cremolada de Chicha Morada',
                         description: 'Maíz morado hervido con piña y especias, hecho cremolada.',
                         price: 7.00,
-                        to: 'cremolada-chicha-morada'
+                        slug: 'cremolada-chicha-morada'
                     },
                     {
                         id: 'csl_6',
                         title: 'Cremolada de Tamarindo',
                         description: 'Sabor agridulce intenso y natural a base de pulpa de tamarindo.',
                         price: 6.50,
-                        to: 'cremolada-tamarindo'
+                        slug: 'cremolada-tamarindo'
                     },
                     {
                         id: 'csl_7',
                         title: 'Cremolada de Camu Camu',
                         description: 'Explosión de vitamina C con pulpa de camu camu amazónico.',
                         price: 7.50,
-                        to: 'cremolada-camu-camu'
+                        slug: 'cremolada-camu-camu'
                     },
                     {
                         id: 'csl_8',
-                        title: 'Cremolada de Mango (Al agua)',
+                        title: 'Cremolada de Mango',
                         description: 'Solo mango maduro y hielo, textura tipo sorbete.',
                         price: 6.50,
-                        to: 'cremolada-mango-agua'
+                        slug: 'cremolada-mango-agua'
                     }
                 ]
             }
@@ -264,56 +292,56 @@ export const menuData = [
                 title: 'Tropical Fruit Tea',
                 description: 'Una mezcla de té verde con trozos de sandía, naranja, maracuyá y piña.',
                 price: 12.00,
-                to: 'tropical-fruit-tea'
+                slug: 'tropical-fruit-tea'
             },
             {
                 id: 'be_2',
                 title: 'Piña Colada Boba (Sin alcohol)',
                 description: 'Smoothie de piña y crema de coco con perlas de tapioca.',
                 price: 13.00,
-                to: 'pina-colada-boba'
+                slug:'pina-colada-boba'
             },
             {
                 id: 'be_3',
                 title: 'Galaxy Magic Tea',
                 description: 'Té de flor de guisante de mariposa que cambia de color azul a morado con limón.',
                 price: 14.00,
-                to: 'galaxy-magic-tea'
+                slug:'galaxy-magic-tea'
             },
             {
                 id: 'be_4',
                 title: 'Frappé de Matcha y Oreo',
                 description: 'Matcha japonés batido con hielo y galletas Oreo trituradas.',
                 price: 14.50,
-                to: 'matcha-oreo-frappe'
+                slug:'matcha-oreo-frappe'
             },
             {
                 id: 'be_5',
                 title: 'Taro Smoothie & Cheese Foam',
                 description: 'Smoothie de taro coronado con una espuma de queso salada y cremosa.',
                 price: 13.50,
-                to: 'taro-cheese-foam'
+                slug:'taro-cheese-foam'
             },
             {
                 id: 'be_6',
                 title: 'Mango Pomelo Sago',
                 description: 'Postre bebible de Hong Kong: puré de mango, leche de coco, pomelo y perlas de sagú.',
                 price: 15.00,
-                to: 'mango-pomelo-sago'
+                slug:'mango-pomelo-sago'
             },
             {
                 id: 'be_7',
                 title: 'Dirty Ube Boba',
                 description: 'Leche fresca con mermelada de Ube (ñame púrpura) manchando el vaso.',
                 price: 12.50,
-                to: 'dirty-ube-boba'
+                slug:'dirty-ube-boba'
             },
             {
                 id: 'be_8',
                 title: 'Rose Petal Milk Tea',
                 description: 'Té con infusión de rosas, leche y pétalos comestibles. Sabor muy elegante.',
                 price: 11.50,
-                to: 'rose-petal-milk-tea'
+                slug:'rose-petal-milk-tea'
             }
         ]
     }

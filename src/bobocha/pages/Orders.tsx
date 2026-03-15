@@ -1,15 +1,18 @@
 import { useParams } from "react-router"
 import { CardDrink } from "../components/cardDrinks/CardDrink"
-import { menuData } from "@/mock/data.mock";
+import { menuData, type MenuItem, type MenuSubCategory } from "@/mock/data.mock";
 
 const Orders = () => {
     const { idSlug } = useParams();
 
     const category = menuData.find(data => data.id === idSlug);
+    let items: MenuItem[] | MenuSubCategory[] = []
 
-    const items = category?.subs?(category.subs.flatMap(sub=>sub)):category?.items ?? []
-
-    /* const items = category?.items ?? [] */
+    if (category?.subs) {
+        items = category.subs
+    } else if (category?.items) {
+        items = category.items
+    } 
 
     return (
         <>
@@ -18,7 +21,8 @@ const Orders = () => {
                     <CardDrink
                         key={item.id}
                         title={item.title}
-                        description={item.description ?? ''}
+                        description={item?.description}
+                        price={item.price}
                         img="/logo.png"
                         to={item.to}
                     />

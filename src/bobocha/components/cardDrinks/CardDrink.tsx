@@ -6,19 +6,19 @@ interface Props {
 
     title: string;
     description?: string;
-    price?: number;
+    price?: number | string;
     btnName?: string;
-    img:string;
-    to:string;
+    img: string;
+    to?: string;
 
 }
 
-export const CardDrink = ({ title, description, price, btnName="Agregar pedido",img,to }: Props) => {
+export const CardDrink = ({ title, description, price, btnName = "Agregar pedido", img, to}: Props) => {
     return (
         <>
             <Card className="w-full max-w-70 flex flex-col h-full">
 
-                <CardHeader >
+                <CardHeader className="mt-auto" >
                     <CardTitle className="text-center">{title}</CardTitle>
                     <div className="flex- flex-col  place-items-center">
                         <img
@@ -26,18 +26,18 @@ export const CardDrink = ({ title, description, price, btnName="Agregar pedido",
                             src={img}
                         />
                     </div>
-                    <CardDescription>
+                    <CardDescription className="line-clamp-3 text-center">
                         {description}
                     </CardDescription>
                 </CardHeader>
 
-                {price && <CardContent>
+                {price && <CardContent className="mt-auto">
                     <p className="text-2xl font-bold text-green-600 text-center">
-                        {price}
+                        S/.{price}
                     </p>
                 </CardContent>}
 
-                <CardFooter>
+                <CardFooter className="mt-auto">
                     <Button className="w-full" asChild>
                         <Link to={to}>{btnName}</Link>
                     </Button>
