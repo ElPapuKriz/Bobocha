@@ -1,63 +1,61 @@
-import { useState } from "react"
-import { useParams } from "react-router"
+
+import { useNavigate, useParams } from "react-router"
+
 import { CardDrink } from "../components/cardDrinks/CardDrink"
-import { menuData } from "@/mock/data.mock";
+import { menu } from "@/mock/data.mock";
+import { Button } from "@/components/ui/button";
+import { MilkIcon } from "lucide-react";
 
 const Orders = () => {
-    const { category, sub } = useParams();
-    const [selectedProduct, setSelectedProduct] = useState<any>(null)
 
-    const cat = menuData.find(data => data.id === category);
-
-    const items =
-        cat?.subs?.find(s => s.id === sub)?.items ??
-        cat?.subs ??
-        cat?.items ??
-        [];
+    const { category,sub } = useParams();
+    const navigate = useNavigate()
+    const isCremolada = category === 'cremoladas'
+    const items = menu.filter(m => {
+        if (!sub)return m.category === category;
+        if (sub==='con_leche')return m.subcategory === 'con_leche'
+        return m.subcategory === 'sin_leche'
+    })
 
     return (
         <>
+            {/* Filtros de la cremolada */}
+            {isCremolada &&
+                <div className="flex flex-wrap flex-row gap-5 ">
+                    <Button className="mt-5"
+                        variant={sub === 'con_leche' ? 'default' : 'outline'}   
+                        onClick={()=>{navigate(`/${category}/con_leche`)}}
+                    >
+                        Con leche <MilkIcon />
+                        
+                    </Button>
+
+                    <Button className="mt-5 "
+                        variant={sub === 'sin_leche' ? 'default' : 'outline'}
+                        onClick={()=>{navigate(`/${category}/sin_leche`)}}
+                    >
+                        Sin leche <MilkIcon />
+                    </Button>
+                </div>
+            }
+
+            {/* Mapeo de los cards products */}
             <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 my-5">
                 {items.map(item => (
+
                     <CardDrink
                         key={item.id}
                         title={item.title}
-                        description={item?.description}
+                        img={"/logo.png"}
                         price={item.price}
-                        img="/logo.png"
-                        to={"items" in item ? item.id : undefined}
-                        onClick={() => {
-                            if (!("items" in item)) {
-                                setSelectedProduct(item)
-                            }
-                        }}
-
+                        description={item.description}
                     />
-                ))}
-                {selectedProduct && (
-                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-
-                        <div className="bg-white rounded-xl p-6 w-80 relative">
-
-                            <button
-                                className="absolute top-2 right-3 text-xl"
-                                onClick={() => setSelectedProduct(null)}
-                            >
-                                ✕
-
-                            </button>
-
-                            <span className="text-xl font-bold text-center">
-                                {selectedProduct.title}
-                            </span>
-
-                        </div>
-
-                    </div>
-                )}
+                ))
+                }
             </div>
         </>
-    );
+
+    )
 };
 
 export default Orders;
