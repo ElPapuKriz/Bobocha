@@ -8,7 +8,7 @@ interface Props {
     description?: string;
     price?: number | string;
     btnName?: string;
-    img: string;
+    img?: string;
     to?: string;
 
 }
@@ -16,13 +16,13 @@ interface Props {
 export const CardDrink = ({ title, description, price, btnName = "Comprar", img, to }: Props) => {
     return (
         <>
-            <Card className="w-full max-w-70 flex flex-col h-full">
+            <Card className="w-full sm:w-62.5 max-w-70 flex h-full">
 
                 <CardHeader className="mt-auto" >
                     <CardTitle className="text-center">{title}</CardTitle>
                     <div className="flex- flex-col  place-items-center">
                         <img
-                            className="w-30 h-max my-2 object-cover"
+                            className="w-30 h-30 my-2 object-cover rounded-2xl"
                             src={img}
                         />
                     </div>

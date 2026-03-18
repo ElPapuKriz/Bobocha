@@ -5,7 +5,7 @@ export const BobochaMain = () => {
         <>
 
             <div className="flex justify-center items-center my-5 ">
-                <h1 className="text-blue-500 font-bold text-xl">Nuestros Bubbles Téa</h1>
+                <h1 className="text-blue-500 font-bold text-xl text-center ">Nuestros Bubbles Téa</h1>
             </div>
 
             {/* Cards Drinks */}

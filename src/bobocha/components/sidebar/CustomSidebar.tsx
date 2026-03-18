@@ -16,7 +16,7 @@ export const CustomSidebar = () => {
                     className="text-green-600 font-bold text-center text-sm md:text-xl hover:text-green-900 cursor-pointer my-10 flex items-center justify-center"
                     onClick={() => setColapso(prev => !prev)}
                 >
-                    {colapso ? <MenuIcon className="md:size-7" /> : "¡Menú BoBochástico!"}
+                    {colapso ? <MenuIcon className="md:size-7" /> : "¡Menú Bobochástico!"}
                 </span>
 
                 <Link to="/">
@@ -43,7 +43,7 @@ export const CustomSidebar = () => {
                         <BookAIcon />
 
                         {!colapso && (
-                            <span className="text-xs md:text-sm">
+                            <span className="text-wrap text-xs md:text-sm">
                                 Acerca de mí
                             </span>
                         )}
@@ -57,10 +57,10 @@ export const CustomSidebar = () => {
 
                 <Button
                     asChild
-                    className="bg-transparent hover:bg-transparent cursor-default text-green-600"
+                    className="bg-transparent hover:bg-transparent cursor-default text-green-500 hover:text-green-700"
                 >
                     <a
-                        className="font-sans text-center hover:text-green-950 cursor-pointer text-xs md:text-sm"
+                        className="text-[10px] writing-mode-vertical   cursor-pointer"
                         href="https://www.instagram.com/ironchris637/"
                         target="_blank"
                     >

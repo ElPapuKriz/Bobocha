@@ -10,13 +10,13 @@ export const LayoutMain = () => {
             <CustomHeader/>
 
             {/* Body */}
-            <div className="flex flex-1">
+            <div className="flex flex-1 ">
 
                 {/* Sidebar */}
                 <CustomSidebar/>
 
                 {/* Content Dinamic */}
-                <div className="flex-1 mx-8">
+                <div className="flex-1 overflow-x-auto scroll-smooth">
                     
                     <Outlet/>
                     
