@@ -9,11 +9,11 @@ interface Props {
     price?: number | string;
     btnName?: string;
     img: string;
-    to: string | undefined;
+    to?: string;
 
 }
 
-export const CardDrink = ({ title, description, price, btnName = "Agregar pedido", img, to }: Props) => {
+export const CardDrink = ({ title, description, price, btnName = "Comprar", img, to }: Props) => {
     return (
         <>
             <Card className="w-full max-w-70 flex flex-col h-full">
@@ -39,7 +39,7 @@ export const CardDrink = ({ title, description, price, btnName = "Agregar pedido
 
                 <CardFooter className="mt-auto">
                     <Button className="w-full" asChild>
-                        {to ? <Link to={to}>{btnName}</Link> : <span>{"Comprar"}</span>}
+                        {to ?<Link to={to}>{btnName}</Link>:<span>{btnName}</span>}
                     </Button>
                 </CardFooter>
 
