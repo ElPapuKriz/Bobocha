@@ -11,7 +11,7 @@ export const routerApp = createBrowserRouter([
         children: [
             { path: "", element: <BobochaMain /> },
             { path: "about-me", element: <AboutMe /> },
-            { path: ":category/:sub?", element: <Orders /> },
+            { path: ":category/:sub?", element: <Orders/> },
         ]
     },
 
