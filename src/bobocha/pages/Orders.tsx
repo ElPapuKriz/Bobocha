@@ -1,10 +1,11 @@
-import { Navigate, useNavigate, useParams, useSearchParams } from "react-router"
+import { useNavigate, useParams, useSearchParams } from "react-router"
 
 import { CardDrink } from "../components/cardDrinks/CardDrink"
 import { menu } from "@/mock/data.mock";
 import { Button } from "@/components/ui/button";
 import { MilkIcon } from "lucide-react";
 import CustomPagination from "../components/pagination/CustomPagination";
+import { useEffect } from "react";
 
 export const Orders = () => {
 
@@ -26,18 +27,26 @@ export const Orders = () => {
     const totalPages = Math.ceil(filteredItems.length / limit);
     const offset = (page - 1) * limit;
     const items = filteredItems.slice(offset, offset + limit);
-    
-    if (isNaN(page) || page < 1) {
-        return <Navigate to={`?page=1&limit=${limit}`} replace />;
-    }
 
-    if (isNaN(limit) || limit < 1) {
-        return <Navigate to={`?page=${page}&limit=4`} replace />;
-    }
+    useEffect(() => {
 
-    if (page > totalPages) {
-        return <Navigate to={`?page=1&limit=${limit}`} replace />;
-    }
+        if (isNaN(page)) {
+            searchParams.set('page', '1')
+            setSearchParams(searchParams)
+        }
+
+        if (isNaN(limit)) {
+            searchParams.set('limit', '4')
+            setSearchParams(searchParams)
+        }
+
+        if (page > totalPages) {
+            searchParams.set('page', '1')
+            setSearchParams(searchParams)
+        }
+
+    },[page,limit,totalPages])
+
 
     return (
         <div className="flex flex-col flex-1 items-center">
