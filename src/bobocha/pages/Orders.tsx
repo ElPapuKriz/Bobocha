@@ -1,4 +1,4 @@
-import { useNavigate, useParams, useSearchParams } from "react-router"
+import { Navigate, useNavigate, useParams, useSearchParams } from "react-router"
 
 import { CardDrink } from "../components/cardDrinks/CardDrink"
 import { menu } from "@/mock/data.mock";
@@ -8,7 +8,7 @@ import CustomPagination from "../components/pagination/CustomPagination";
 
 export const Orders = () => {
 
-    const [searchParams,setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
     const { category, sub } = useParams();
     const navigate = useNavigate()
 
@@ -26,20 +26,17 @@ export const Orders = () => {
     const totalPages = Math.ceil(filteredItems.length / limit);
     const offset = (page - 1) * limit;
     const items = filteredItems.slice(offset, offset + limit);
-
-    if (isNaN(page)) {
-        searchParams.set('page', '1')
-        setSearchParams(searchParams)
+    
+    if (isNaN(page) || page < 1) {
+        return <Navigate to={`?page=1&limit=${limit}`} replace />;
     }
 
-    if (isNaN(limit)) {
-        searchParams.set('limit', '4')
-        setSearchParams(searchParams)
+    if (isNaN(limit) || limit < 1) {
+        return <Navigate to={`?page=${page}&limit=4`} replace />;
     }
 
     if (page > totalPages) {
-        searchParams.set('page', '1')
-        setSearchParams(searchParams)
+        return <Navigate to={`?page=1&limit=${limit}`} replace />;
     }
 
     return (
