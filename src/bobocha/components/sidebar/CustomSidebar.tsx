@@ -8,7 +8,7 @@ export const CustomSidebar = () => {
     const [colapso, setColapso] = useState(true)
 
     return (
-        <aside className={`flex flex-col border-r p-4 bg-linear-to-b from-green-50 to-green-200 transition-all duration-300 ${colapso ? "w-16" : "w-40"} `}>
+        <aside className={`flex flex-col border-r min-h-screen p-4 bg-linear-to-b from-green-50 to-green-200 transition-all duration-300 ${colapso ? "w-16" : "w-40"} `}>
 
             <div className="flex flex-col gap-2">
 

@@ -9,8 +9,8 @@ import { MilkIcon } from "lucide-react";
 const Orders = () => {
 
     const { category,sub } = useParams();
-    const isCremolada = category === 'cremoladas'
     const navigate = useNavigate()
+    const isCremolada = category === 'cremoladas'
     const items = menu.filter(m => {
         if (!sub)return m.category === category;
         if (sub==='con_leche')return m.subcategory === 'con_leche'
