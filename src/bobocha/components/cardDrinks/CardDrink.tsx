@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Link } from "react-router";
+import CustomModalButton from "../modal/CustomModalButton";
+import CardModalDrink from "../cardModal/CardModalDrink";
 
 interface Props {
 
     title: string;
-    description?: string;
+    description: string;
     price?: number | string;
     btnName?: string;
     img?: string;
@@ -37,10 +37,24 @@ export const CardDrink = ({ title, description, price, btnName = "Comprar", img,
                     </p>
                 </CardContent>}
 
-                <CardFooter className="mt-auto">
-                    <Button className="w-full" asChild>
-                        {to ?<Link to={to}>{btnName}</Link>:<span>{btnName}</span>}
-                    </Button>
+                <CardFooter className="">
+                    <CustomModalButton to={to} btnName={btnName} title={title} description={description}>
+                        <CardModalDrink 
+                        title="Tapioca Clásica"
+                        img="/logo.png"
+                        price={0}
+                        />
+                        <CardModalDrink 
+                        title="Bubble Maracuya"
+                        img="/logo.png"
+                        price={1}
+                        />
+                        <CardModalDrink 
+                        title="Bubble Manzana"
+                        img="/logo.png"
+                        price={1}
+                        />
+                    </CustomModalButton>
                 </CardFooter>
 
             </Card>

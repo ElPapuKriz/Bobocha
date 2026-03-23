@@ -8,12 +8,12 @@ export const CustomSidebar = () => {
     const [colapso, setColapso] = useState(true)
 
     return (
-        <aside className={`flex flex-col border-r min-h-screen p-4 bg-linear-to-b from-green-50 to-green-200 transition-all duration-300 ${colapso ? "w-16" : "w-40"} `}>
+        <aside className={`justify-between flex flex-col border-r min-h-screen p-4 bg-linear-to-b from-green-50 to-green-200 transition-all duration-300 ${colapso ? "w-16" : "w-40"} `}>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col  gap-2 ">
 
                 <span
-                    className="text-green-600 font-bold text-center text-sm md:text-xl hover:text-green-900 cursor-pointer my-10 flex items-center justify-center"
+                    className=" text-green-600 font-bold text-center text-sm md:text-xl hover:text-green-900 cursor-pointer my-10 flex items-center"
                     onClick={() => setColapso(prev => !prev)}
                 >
                     {colapso ? <MenuIcon className="md:size-7" /> : "¡Menú Bobochástico!"}
@@ -53,7 +53,7 @@ export const CustomSidebar = () => {
 
             </div>
 
-            <div className="min-h-screen flex flex-col justify-end">
+            <div className="flex flex-col ">
 
                 <Button
                     asChild

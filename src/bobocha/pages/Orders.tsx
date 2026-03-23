@@ -21,12 +21,12 @@ export const Orders = () => {
         return m.subcategory === 'sin_leche'
     })
 
-    const page = Number(searchParams.get('page') ?? 1);
+    const page  =  Number(searchParams.get('page') ?? 1);
     const limit = Number(searchParams.get('limit') ?? 4);
 
     const totalPages = Math.ceil(filteredItems.length / limit);
-    const offset = (page - 1) * limit;
-    const items = filteredItems.slice(offset, offset + limit);
+    const offset     = (page - 1) * limit;
+    const items      = filteredItems.slice(offset, offset + limit);
 
     useEffect(() => {
 
@@ -74,7 +74,7 @@ export const Orders = () => {
                     <CardDrink
                         key={item.id}
                         title={item.title}
-                        img={item.img ?? '/logo.png'}
+                        img={item.img ? item.img:'/logo.png'}
                         price={item.price}
                         description={item.description}
                     />
